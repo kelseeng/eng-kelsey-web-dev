@@ -3,18 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Web Dev Course Home Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        ul#menu li {
+            display: inline;
+            margin-left: -20px;
+            padding-right: 20px;
+            vertical-align: middle;
+        }
+    </style>
 </head>
 <body>
-    <h1>Web Dev Course Home Page</h1>
-
-    <h2>Kelsey Eng</h2>
-    <img src="resources/profile-picture.jpg" class="centerImage" style="width:360px;height:240px;">
-
-    <ul>
-        <a href="project/index.html" style="margin-right:15px">Project</a>
-        <a href="assignment/index.html" style="margin-left:15px;margin-right:15px">Assignment</a>
-        <a href="test/index.html" style="margin-left:15px;margin-right:15px">Test MongoDB</a>
-        <a href="https://github.com/kelseeng/eng-kelsey-web-dev.git" style="margin-left:15px" target="_blank">GitHub</a>
-    </ul>
+    <h1 style="text-align: center">CS4450 Web Dev Course Home Page</h1>
+    <p>&nbsp;</p>
+    <div>
+        <img src="resources/profile-picture.jpg" align="middle"
+             style="width:360px;
+                height:240px;
+                display:block;
+                margin-left:auto;
+                margin-right:auto">
+        <p></p>
+        <ul id="menu" style="list-style-type:none; text-align: center">
+            <li>
+                <a href="project/index.html" style="margin-right:15px">Project</a>
+            </li>
+            <li>
+                <a href="assignment/index.html" style="margin-left:15px;margin-right:15px">Assignment</a>
+            </li>
+            <li>
+                <a href="test/index.html" style="margin-left:15px;margin-right:15px">Test MongoDB</a>
+            </li>
+            <li>
+                <a href="https://github.com/kelseeng/eng-kelsey-web-dev.git"
+                   style="margin-left:15px"
+                   target="_blank">GitHub</a>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>
