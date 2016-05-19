@@ -11,9 +11,21 @@ input {
 }
 
 body {
-    padding-top: 60px;
+    padding-top: 80px;
+}
+
+p.navbar-fixed-top {
+    margin-top: 0px;
+}
+
+p.navbar-fixed-bottom {
+    margin-bottom: 0px;
 }
 
 p.navbar-text.pull-right {
     margin-right: 15px;
+}
+
+p.navbar-text.pull-left {
+    margin-left: 15px;
 }
