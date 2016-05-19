@@ -5,7 +5,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
-    <title>New Website</title>
+    <title>Widget Header</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="../css/style.css" rel="stylesheet"/>
 </head>
@@ -18,7 +18,7 @@
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </p>
-            <a class="navbar-brand" href="#">New Website</a>
+            <a class="navbar-brand" href="#">Widget Edit</a>
             <p class="navbar-text pull-right">
                 <a href="#" class="navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
@@ -31,24 +31,35 @@
     <form>
         <div>
             <fieldset class="form-group">
-                <label for="websiteName">Name</label>
+                <label for="widgetName">Name</label>
                 <input type="text"
                        class="form-control"
-                       id="websiteName"
+                       id="widgetName"
                        placeholder="Name">
             </fieldset>
         </div>
         <div>
             <fieldset class="form-group">
-                <label for="description">Description</label>
-                    <textarea id="description"
-                              class="form-control"
-                              style="rows:5"
-                              value="description"> <!--todo fix whitespace-->
-                    </textarea>
+                <label for="widgetText">Text</label>
+                <input type="text"
+                       class="form-control"
+                       id="widgetText"
+                       placeholder="text"
+                       value="US Senate Reaches Compromise on Emergency">
             </fieldset>
-        </div>
+        </div><div>
+        <fieldset class="form-group">
+            <label for="widgetSize">Size</label>
+            <input type="number"
+                   class="form-control"
+                   id="widgetSize"
+                   placeholder="3"> <!--todo make drop down-->
+        </fieldset>
+    </div>
+
     </form>
+    <a class="btn btn-danger btn-block"
+       href="../website-pages/website-list.html">Delete</a>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom navbar-text pull-right ">
     <div class="container-fluid">
