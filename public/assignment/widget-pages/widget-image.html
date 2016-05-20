@@ -10,6 +10,91 @@
     <link href="../css/style.css" rel="stylesheet"/>
 </head>
 <body>
-
+<nav class="navbar navbar-default navbar-fixed-top navbar-text pull-right ">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#">Widget Edit</a>
+            <p class="navbar-text pull-right">
+                <a href="#" class="navbar-link">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <form>
+        <div>
+            <fieldset class="form-group">
+                <label for="imageName">Name</label>
+                <input type="text"
+                       class="form-control"
+                       id="imageName"
+                       placeholder="Name">
+            </fieldset>
+        </div>
+        <div>
+            <fieldset class="form-group">
+                <label for="imageText">Text</label>
+                <input type="text"
+                       class="form-control"
+                       id="imageText"
+                       placeholder="Description">
+            </fieldset>
+        </div>
+        <div>
+            <fieldset class="form-group">
+                <label for="imageURL">URL</label>
+                <input type="url"
+                       class="form-control"
+                       id="imageURL"
+                       placeholder="http://...">
+            </fieldset>
+        </div>
+        <div>
+            <fieldset class="form-group">
+                <label for="imageWidth">Width</label>
+                <input type="number"
+                       class="form-control"
+                       id="imageWidth"
+                       placeholder="Width"> <!-- todo find percentage type -->
+            </fieldset>
+        </div>
+        <div>
+            <fieldset class="form-group">
+                <label for="imageFileUpload">Upload</label>
+                <input type="file"
+                       class="form-control"
+                       id="imageFileUpload"
+                       placeholder="http://...">
+            </fieldset>
+        </div>
+    </form>
+    <a class="btn btn-primary btn-block"
+       href="../website-pages/website-list.html">Upload Image</a> <!-- todo FIX ALL LINKS -->
+    <a class="btn btn-danger btn-block"
+       href="../website-pages/website-list.html">Delete</a>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom navbar-text pull-right ">
+    <div class="container-fluid">
+        <div class="navbar-footer">
+            <p class="navbar-text pull-left">
+                <a href="#" class="navbar-link">
+                    <span class="glyphicon glyphicon-share-alt"></span>
+                </a>
+            </p>
+            <p class="navbar-text pull-right">
+                <a href="../user-pages/profile.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
 </body>
 </html>
