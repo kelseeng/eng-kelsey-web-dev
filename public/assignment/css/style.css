@@ -11,25 +11,30 @@ input {
 }
 
 body {
-    padding-top: 80px;
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
-p.navbar-fixed-top {
-    margin-top: 0px;
-}
-
-p.navbar-fixed-bottom {
-    margin-bottom: 0px;
-}
-
-p.navbar-text.pull-right {
+.navbar-text.pull-right {
     margin-right: 15px;
 }
 
-p.navbar-text.pull-left {
+.navbar-text.pull-left {
     margin-left: 15px;
+}
+
+#header {
+    margin-top: 0px;
+}
+
+#footer {
+    margin-bottom: 0px;
 }
 
 .blue {
     color: dodgerblue;
+}
+
+.black {
+    color: black;
 }
