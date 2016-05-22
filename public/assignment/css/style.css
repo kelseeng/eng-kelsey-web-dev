@@ -19,6 +19,10 @@ body {
 textarea {
     word-wrap: break-word;
 }
+
+select {
+    width: 100%;
+}
 .navbar-text.pull-right {
     margin-right: 15px;
 }
