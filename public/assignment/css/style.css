@@ -13,6 +13,7 @@ input {
 body {
     padding-top: 60px;
     padding-bottom: 60px;
+    <!--transform: scale(1.25)-->
 }
 
 textarea {
