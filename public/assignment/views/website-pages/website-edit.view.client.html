@@ -1,27 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
-    <title>New Website</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
 <nav id="header"
      class="navbar navbar-default navbar-fixed-top navbar-text pull-right ">
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="website-list.html" class="navbar-link">
+                <a href="website-list.view.client.html" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </p>
-            <a class="navbar-brand" href="">New Website</a>
+            <a class="navbar-brand" href="">Edit Websites</a>
             <p class="navbar-text pull-right">
-                <a href="website-list.html" class="navbar-link">
+                <a href="website-list.view.client.html" class="navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </p>
@@ -32,35 +20,40 @@
     <form>
         <div>
             <fieldset class="form-group">
-                <label for="websiteName">Name</label>
+                <label for="websiteName">Website Name</label>
                 <input type="text"
                        class="form-control"
                        id="websiteName"
-                       placeholder="Name">
+                       placeholder="Blogger">
             </fieldset>
         </div>
         <div>
             <fieldset class="form-group">
-                <label for="description">Description</label>
+                <label for="description">Website Description</label>
                     <textarea id="description"
                               class="form-control"
                               rows="5"
-                              placeholder="This is an undescriptive example description"></textarea>
+                              placeholder="Blogger is a blog-publishing service that allows multi-user blogs with time-stamped entries. It was developed by Pyra Labs, which was bought by Google in 2003. Generally, the blogs are hosted by Google..."></textarea>
             </fieldset>
         </div>
     </form>
+    <a class="btn btn-danger btn-block"
+       href="website-list.view.client.html">Delete</a>
 </div>
 <nav id="footer"
      class="navbar navbar-default navbar-fixed-bottom navbar-text pull-right ">
     <div class="container-fluid">
         <div class="navbar-footer">
+            <p class="navbar-text pull-left">
+                <a href="" class="navbar-link">
+                    <span class="glyphicon glyphicon-share-alt"></span>
+                </a>
+            </p>
             <p class="navbar-text pull-right">
-                <a href="../user-pages/profile.html" class="navbar-link">
+                <a href="../user-pages/profile.view.client.html" class="navbar-link">
                     <span class="glyphicon glyphicon-user blue"></span>
                 </a>
             </p>
         </div>
     </div>
 </nav>
-</body>
-</html>

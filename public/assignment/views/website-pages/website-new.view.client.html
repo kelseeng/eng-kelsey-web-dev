@@ -1,27 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
-    <title>New Page</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
 <nav id="header"
      class="navbar navbar-default navbar-fixed-top navbar-text pull-right ">
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="page-list.html" class="navbar-link">
+                <a href="website-list.view.client.html" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </p>
-            <a class="navbar-brand" href="">New Page</a>
+            <a class="navbar-brand" href="">New Website</a>
             <p class="navbar-text pull-right">
-                <a href="page-list.html" class="navbar-link">
+                <a href="website-list.view.client.html" class="navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </p>
@@ -32,20 +20,20 @@
     <form>
         <div>
             <fieldset class="form-group">
-                <label for="pageName">Name</label>
+                <label for="websiteName">Name</label>
                 <input type="text"
                        class="form-control"
-                       id="pageName"
-                       placeholder="Blog Post">
+                       id="websiteName"
+                       placeholder="Name">
             </fieldset>
         </div>
         <div>
             <fieldset class="form-group">
-                <label for="pageTitle">Title</label>
-                <input type="text"
-                       class="form-control"
-                       id="pageTitle"
-                       placeholder="Page Title">
+                <label for="description">Description</label>
+                    <textarea id="description"
+                              class="form-control"
+                              rows="5"
+                              placeholder="This is an undescriptive example description"></textarea>
             </fieldset>
         </div>
     </form>
@@ -55,12 +43,10 @@
     <div class="container-fluid">
         <div class="navbar-footer">
             <p class="navbar-text pull-right">
-                <a href="../user-pages/profile.html" class="navbar-link">
+                <a href="../user-pages/profile.view.client.html" class="navbar-link">
                     <span class="glyphicon glyphicon-user blue"></span>
                 </a>
             </p>
         </div>
     </div>
 </nav>
-</body>
-</html>
