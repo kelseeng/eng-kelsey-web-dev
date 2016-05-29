@@ -4,7 +4,7 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="">Profile</a>
             <p class="navbar-text pull-right">
-                <a href="/user/:uid" class="navbar-link">
+                <a ng-click="model.updateUser()" class="navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </p>
@@ -12,11 +12,21 @@
     </div>
 </nav>
 <div class="container">
+
+    <div ng-show="model.success" class="alert alert-success">
+        {{model.success}}
+    </div>
+
+    <div ng-show="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
+
     <form>
         <div>
             <fieldset class="form-group">
                 <label for="username">Username</label>
-                <input type="text"
+                <input ng-model="model.user.username"
+                       type="text"
                        class="form-control"
                        id="username"
                        placeholder="kelseeng">
@@ -25,7 +35,8 @@
         <div>
             <fieldset class="form-group">
                 <label for="email">Email address</label>
-                <input type="email"
+                <input ng-model="model.user.email"
+                       type="email"
                        class="form-control"
                        id="email"
                        placeholder="kelseeng@gmail.com">
@@ -34,7 +45,8 @@
         <div>
             <fieldset class="form-group">
                 <label for="first">First Name</label>
-                <input type="text"
+                <input ng-model="model.user.firstName"
+                       type="text"
                        class="form-control"
                        id="first"
                        placeholder="Kelsey">
@@ -43,7 +55,8 @@
         <div>
             <fieldset class="form-group">
                 <label for="last">Last Name</label>
-                <input type="text"
+                <input ng-model="model.user.lastName"
+                       type="text"
                        class="form-control"
                        id="last"
                        placeholder="Eng">
@@ -60,7 +73,7 @@
     <div class="container-fluid">
         <div class="navbar-footer">
             <p class="navbar-text pull-right">
-                <a href="/user/:uid" class="navbar-link">
+                <a href="#/user/:uid" class="navbar-link">
                     <span class="glyphicon glyphicon-user blue"></span>
                 </a>
             </p>

@@ -8,13 +8,17 @@
     function Config($routeProvider) {
         $routeProvider
             .when("/login", {
-                templateUrl: "/assignment/views/user-pages/login.view.client.html"
+                templateUrl: "/assignment/views/user-pages/login.view.client.html",
+                controller: "LoginController",
+                controllerAs: "model"
             })
             .when("/register", {
                 templateUrl: "/assignment/views/user-pages/register.view.client.html"
             })
             .when("/user/:uid", {
-                templateUrl: "/assignment/views/user-pages/profile.view.client.html"
+                templateUrl: "/assignment/views/user-pages/profile.view.client.html",
+                controller: "ProfileController",
+                controllerAs:"model"
             })
 
 
