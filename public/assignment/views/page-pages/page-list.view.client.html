@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="../views/website-pages/website-list.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </p>
@@ -19,24 +19,11 @@
 <div class="container">
     <ul class="list-group">
         <li ng-repeat="page in model.pages" class="list-group-item">
-            <a href="#/user/">Blog Post</a>
-            <a href="page-edit.view.client.html" class="pull-right">
+            <a href="#/user/{{model.userId}}/website/{{page.websiteId}}/page/{{page._id}}/widget">Blog Post</a>
+            <a href="#/user/{{model.userId}}/website/{{page.websiteId}}/page/{{page._id}}" class="pull-right">
                 <span class="glyphicon glyphicon-cog blue"></span>
             </a>
         </li>
-
-        <ul class="list-group">
-            <li ng-repeat="website in model.websites" class="list-group-item">
-                <a href="#/user/{{website.developerId}}/website/{{website._id}}/page">{{website.name}}</a>
-                <a href="" class="pull-right">
-                    <span class="glyphicon glyphicon-play blue"></span>
-                </a>
-                <a href="#/user/{{website.developerId}}/website/:{{website._id}}" class="pull-right">
-                    <span class="glyphicon glyphicon-pencil blue"></span>
-                </a>
-            </li>
-        </ul>
-
     </ul>
 </div>
 <nav id="footer"
