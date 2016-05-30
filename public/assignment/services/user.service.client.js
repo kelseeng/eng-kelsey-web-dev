@@ -13,17 +13,23 @@
             ];
 
         var api = {
-            "createUser"   : "createUser",
-            "findUserById" : "findUserById",
-            "findUserByUsername" : "findUserByUsername",
-            "findUserByCredentials" : "findUserByCredentials",
-            "updateUser" : "updateUser",
-            "deleteUser" : "deleteUser"
+            createUser   : createUser,
+            findUserById : findUserById,
+            findUserByUsername : findUserByUsername,
+            findUserByCredentials : findUserByCredentials,
+            updateUser : updateUser,
+            deleteUser : deleteUser
         };
         return api;
 
         function createUser(user) {
-            
+            for(var i in users) {
+                if(users[i].username !== user.username) {
+                    users.push(user);
+                    return true;
+                }
+            }
+            return false;
         }
 
         function findUserById(id) {
@@ -48,11 +54,9 @@
             for(var i in users) {
                 if(users[i].username === username && users[i].password === password) {
                     return users[i];
-                } 
-                else { 
-                    return null;
                 }
             }
+            return null;
         }
 
         function updateUser(userId, user) {
@@ -67,7 +71,19 @@
         }
 
         function deleteUser(userId) {
-            
+            var index = -1;
+            for(var i in users) {
+                if(users[i]._id === userId) {
+                    index = i;
+                }
+            }
+            if(index !== -1) {
+                users.splice(index, 1);
+                return true;
+            }
+            else {
+                return false;
+            }
         }
     }
 })();

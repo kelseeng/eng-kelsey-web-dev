@@ -1,3 +1,9 @@
-/**
- * Created by kelseeng on 5/29/16.
- */
+(function() {
+    angular
+        .module("WebAppMaker")
+        .controller("WidgetListController", WidgetListController)
+
+    function WidgetListController(WidgetService) {
+        var vm = this;
+    }
+})();

@@ -13,7 +13,9 @@
                 controllerAs: "model"
             })
             .when("/register", {
-                templateUrl: "/assignment/views/user-pages/register.view.client.html"
+                templateUrl: "/assignment/views/user-pages/register.view.client.html",
+                controller: "RegisterController",
+                controllerAs: "model"
             })
             .when("/user/:uid", {
                 templateUrl: "/assignment/views/user-pages/profile.view.client.html",
@@ -23,34 +25,52 @@
 
 
             .when("/user/:uid/website", {
-                templateUrl: "/views/website-pages/website-list.view.client.html"
+                templateUrl: "/assignment/views/website-pages/website-list.view.client.html",
+                controller: "WebsiteListController",
+                controllerAs: "model"
             })
             .when("/user/:uid/website/new", {
-                templateUrl: "/views/website-pages/website-new.view.client.html"
+                templateUrl: "/assignment/views/website-pages/website-new.view.client.html",
+                controller: "NewWebsiteController",
+                controllerAs: "model"
             })
             .when("/user/:uid/website/:wid", {
-                templateUrl: "/views/website-pages/website-edit.view.client.html"
+                templateUrl: "/assignment/views/website-pages/website-edit.view.client.html",
+                controller: "EditWebsiteController",
+                controllerAs: "model"
             })
 
 
             .when("/user/:uid/website/:wid/page", {
-                templateUrl: "/views/page-pages/page-list.view.client.html"
+                templateUrl: "/assignment/views/page-pages/page-list.view.client.html",
+                controller: "PageListController",
+                controllerAs: "model"
             })
             .when("/user/:uid/website/:wid/page/new", {
-                templateUrl: "/views/page-pages/page-new.view.client.html"
+                templateUrl: "/assignment/views/page-pages/page-new.view.client.html",
+                controller: "NewPageController",
+                controllerAs: "model"
             })
             .when("/user/:uid/website/:wid/page/:pid", {
-                templateUrl: "/views/page-pages/page-edit.view.client.html"
+                templateUrl: "/assignment/views/page-pages/page-edit.view.client.html",
+                controller: "EditPageController",
+                controllerAs: "model"
             })
 
             .when("/user/:uid/website/:wid/page/:pid/widget", {
-                templateUrl: "/views/widget-pages/widget-list.view.client.html"
+                templateUrl: "/assignment/views/widget-pages/widget-list.view.client.html",
+                controller: "WidgetListController",
+                controllerAs: "model"
             })
             .when("/user/:uid/website/:wid/page/:pid/widget/new", {
-                templateUrl: "/views/widget-pages/widget-chooser.view.client.html"
+                templateUrl: "/assignment/views/widget-pages/widget-chooser.view.client.html",
+                controller: "NewWidgetController",
+                controllerAs: "model"
             })
             .when("/user/:uid/website/:wid/page/:pid/widget/:wgid", {
-                templateUrl: "/views/widget-pages/widget-edit.view.client.html"
+                templateUrl: "/assignment/views/widget-pages/widget-edit.view.client.html",
+                controller: "EditWidgetController",
+                controllerAs: "model"
             })
     }
 })();

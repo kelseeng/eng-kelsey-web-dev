@@ -17,20 +17,46 @@
             "deleteWebsite" : "deleteWebsite"
         };
         return api;
+
         function createPage(websiteId, page) {
-            
+            for(var i in pages) {
+                if(pages[i].websiteId === websiteId) {
+
+                }
+                else {
+                    pages.push(page);
+                }
+            }
         }
         function findPagesByWebsiteId(websiteId) {
-            
+            for(var i in pages) {
+                if(pages[i].websiteId === websiteId) {
+                    return pages[i];
+                }
+            }
+            return null;
         }
+
         function findPageById(pageId) {
-            
+            for(var i in pages) {
+                if(pages[i]._id === pageId) {
+                    return pages[i];
+                }
+            }
+            return null;
         }
         function updatePage(pageId, page) {
             
         }
+
         function deletePage(pageId) {
-            
+            var index = -1;
+            for(var i in pages) {
+                if(pages[i]._id === pageId) {
+                    index = i;
+                }
+            }
+            return null;
         }
     }
 })();

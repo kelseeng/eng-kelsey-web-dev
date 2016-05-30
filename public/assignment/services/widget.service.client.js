@@ -27,6 +27,12 @@
 
         }
         function findWidgetsByPageId(pageId) {
+            for(var i in widgets) {
+                if(widgets[i].pageId === pageId) {
+                    return widgets[i];
+                }
+            }
+            return null;
 
         }
         function findWidgetById(widgetId) {

@@ -1,3 +1,9 @@
-/**
- * Created by kelseeng on 5/29/16.
- */
+(function() {
+    angular
+        .module("WebAppMaker")
+        .controller("WebsiteListController", WebsiteListController)
+
+    function WebsiteListController(WebsiteService) {
+        var vm = this;
+    }
+})();
