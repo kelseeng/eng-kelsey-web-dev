@@ -4,7 +4,7 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="">Profile</a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.updateUser(model.user)" class="navbar-link">
+                <a ng-click="model.updatedUser(model.user)" class="navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </p>
@@ -13,7 +13,6 @@
 </nav>
 <div class="container">
 
-    <!-- todo fix this update alert -->
     <div ng-show="model.success" class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Success!</strong> Your profile was saved.

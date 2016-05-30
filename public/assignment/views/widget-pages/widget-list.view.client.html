@@ -15,6 +15,20 @@
         </div>
     </div>
 </nav>
+<div ng-repeat="widgets in model.widgets" class="widget">
+    <p class="pull-right overlayTopRight">
+        <a href="widget-heading.view.client.html">
+            <span class="glyphicon glyphicon-cog blue"></span>
+        </a>
+        <a href="">
+            <span class="glyphicon glyphicon-align-justify black"></span>
+        </a>
+    </p>
+    <ANY ng-switch="">
+
+    </ANY>
+{{widget}}
+</div>
 <div class="container">
     <ul id="noBullets">
         <li>
@@ -143,7 +157,7 @@
                 </a>
             </p>
             <p class="navbar-text pull-right">
-                <a href="../user-pages/profile.view.client.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}" class="navbar-link">
                     <span class="glyphicon glyphicon-user blue"></span>
                 </a>
             </p>

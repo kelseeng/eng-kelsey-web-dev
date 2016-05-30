@@ -7,6 +7,7 @@
 
     function Config($routeProvider) {
         $routeProvider
+            //user routes
             .when("/login", {
                 templateUrl: "/assignment/views/user-pages/login.view.client.html",
                 controller: "LoginController",
@@ -23,7 +24,7 @@
                 controllerAs:"model"
             })
 
-
+            //website routes
             .when("/user/:uid/website", {
                 templateUrl: "/assignment/views/website-pages/website-list.view.client.html",
                 controller: "WebsiteListController",
@@ -40,7 +41,7 @@
                 controllerAs: "model"
             })
 
-
+            //page routes
             .when("/user/:uid/website/:wid/page", {
                 templateUrl: "/assignment/views/page-pages/page-list.view.client.html",
                 controller: "PageListController",
@@ -57,6 +58,7 @@
                 controllerAs: "model"
             })
 
+            //widget routes
             .when("/user/:uid/website/:wid/page/:pid/widget", {
                 templateUrl: "/assignment/views/widget-pages/widget-list.view.client.html",
                 controller: "WidgetListController",
@@ -71,6 +73,10 @@
                 templateUrl: "/assignment/views/widget-pages/widget-edit.view.client.html",
                 controller: "EditWidgetController",
                 controllerAs: "model"
+            })
+
+            .otherwise({
+                redirectTo: "/login"
             })
     }
 })();

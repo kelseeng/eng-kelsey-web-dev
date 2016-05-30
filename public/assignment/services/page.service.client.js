@@ -10,11 +10,11 @@
                 { "_id": "543", "name": "Post 3", "websiteId": "456" }
             ];
         var api = {
-            "createWebsite"   : "createWebsite",
-            "findWebsitesByUser" : "findWebsitesByUser",
-            "findWebsitesById" : "findWebsitesById",
-            "updateWebsite" : "updateWebsite",
-            "deleteWebsite" : "deleteWebsite"
+            createPage   : createPage,
+            findPagesByWebsiteId : findPagesByWebsiteId,
+            findPageById : findPageById,
+            updatePage : updatePage,
+            deletePage : deletePage
         };
         return api;
 
@@ -29,12 +29,13 @@
             }
         }
         function findPagesByWebsiteId(websiteId) {
+            var result = [];
             for(var i in pages) {
                 if(pages[i].websiteId === websiteId) {
-                    return pages[i];
+                    result.push(pages[i]);
                 }
             }
-            return null;
+            return result;
         }
 
         function findPageById(pageId) {

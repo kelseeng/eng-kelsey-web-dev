@@ -4,7 +4,7 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="">Websites</a>
             <p class="navbar-text pull-right">
-                <a href="website-new.view.client.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/new" class="navbar-link">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </p>
@@ -13,39 +13,12 @@
 </nav>
 <div class="container">
     <ul class="list-group">
-        <li class="list-group-item">
-            <a href="../page-pages/page-list.view.client.html">Blogging App</a>
+        <li ng-repeat="website in model.websites" class="list-group-item">
+            <a href="#/user/{{website.developerId}}/website/{{website._id}}/page">{{website.name}}</a>
             <a href="" class="pull-right">
                 <span class="glyphicon glyphicon-play blue"></span>
             </a>
-            <a href="website-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-pencil blue"></span>
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="../page-pages/page-list.view.client.html">Address Book App</a>
-            <a href="" class="pull-right">
-                <span class="glyphicon glyphicon-play blue"></span>
-            </a>
-            <a href="website-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-pencil blue"></span>
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="../page-pages/page-list.view.client.html">Script Texting App</a>
-            <a href="" class="pull-right">
-                <span class="glyphicon glyphicon-play blue"></span>
-            </a>
-            <a href="website-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-pencil blue"></span>
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="../page-pages/page-list.view.client.html">Blogger</a>
-            <a href="" class="pull-right">
-                <span class="glyphicon glyphicon-play blue"></span>
-            </a>
-            <a href="website-edit.view.client.html" class="pull-right">
+            <a href="#/user/{{website.developerId}}/website/:{{website._id}}" class="pull-right">
                 <span class="glyphicon glyphicon-pencil blue"></span>
             </a>
         </li>
@@ -56,7 +29,7 @@
     <div class="container-fluid">
         <div class="navbar-footer">
             <p class="navbar-text pull-right">
-                <a href="../user-pages/profile.view.client.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}" class="navbar-link">
                     <span class="glyphicon glyphicon-user blue"></span>
                 </a>
             </p>

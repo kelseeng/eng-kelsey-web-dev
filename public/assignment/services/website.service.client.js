@@ -15,21 +15,32 @@
                 { "_id": "789", "name": "Chess",       "developerId": "234" }
             ];
         var api = {
-            "createWebsite"   : "createWebsite",
-            "findWebsitesByUser" : "findWebsitesByUser",
-            "findWebsitesById" : "findWebsitesById",
-            "updateWebsite" : "updateWebsite",
-            "deleteWebsite" : "deleteWebsite"
+            createWebsite   : createWebsite,
+            findWebsitesByUser : findWebsitesByUser,
+            findWebsiteById : findWebsiteById,
+            updateWebsite : updateWebsite,
+            deleteWebsite : deleteWebsite
         };
         return api;
         function createWebsite(userId, website) {
             
         }
         function findWebsitesByUser(userId) {
-            
+            var result = [];
+            for(var i in websites) {
+                if(websites[i].developerId === userId) {
+                    result.push(websites[i]);
+                }
+            }
+            return result;
         }
-        function findWebsitesById(websiteId) {
-            
+        function findWebsiteById(websiteId) {
+            for(var i in websites) {
+                if(websites[i]._id === websiteId) {
+                    return websites[i];
+                }
+            }
+            return null;
         }
         function updateWebsite(websiteId, website) {
             
