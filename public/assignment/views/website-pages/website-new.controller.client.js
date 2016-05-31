@@ -5,16 +5,23 @@
 
     function NewWebsiteController($routeParams, WebsiteService) {
         var vm = this;
-        var userId = $routeParams.uid;
+        vm.userId = $routeParams.uid;
         
-        vm.createWebsite = createWebsite;
+        vm.createWebsite = createWebsite();
 
-        function createWebsite() {
+        function createWebsite(websiteName) {
             var newWebsite = {
-                _id:(newDate().getTime()),
-                name: widgetType,
+                _id:(new Date().getTime()),
+                name: websiteName,
+                developerId: vm.userId
             };
-            widgets.push(newWidget);
+            var result = WebsiteService.createWebsite(vm.userId, newWebsite);
+            if(result === true) {
+                vm.success = "Website Successfully Created";
+            }
+            else {
+                vm.error = "Website Was Unable to Be Created";
+            }
         }
     }
 })();

@@ -50,7 +50,8 @@
         </div>
     </form>
     <a class="btn btn-danger btn-block"
-       href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">Delete</a>
+       href="#/user/{{model.userId}}/website/{{model.websiteId}}/page"
+       ng-click="model.deletedPage(model.page)">Delete</a>
 </div>
 <nav id="footer"
      class="navbar navbar-default navbar-fixed-bottom navbar-text pull-right ">

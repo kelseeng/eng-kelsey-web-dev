@@ -11,11 +11,17 @@
 
         function createPage() {
             var newPage = {
-                _id:(newDate().getTime()),
+                _id:(new Date().getTime()),
                 name: "Post " + PageService.createName(vm.websiteId),
                 websiteId: vm.websiteId
             };
-            widgets.push(newWidget);
+            var page = PageService.createPage(vm.websiteId, newPage);
+            if(page === true) {
+                vm.success = "Page Successfully Created";
+            }
+            else {
+                vm.error = "Page Was Unable to Be Created";
+            }
         }
     }
 })();

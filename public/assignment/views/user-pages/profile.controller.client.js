@@ -8,7 +8,6 @@
         vm.updatedUser = updateTheUser;
 
         var id = $routeParams["uid"];
-        var index = -1;
         function init() {
             vm.user = angular.copy(UserService.findUserById(id));
         }

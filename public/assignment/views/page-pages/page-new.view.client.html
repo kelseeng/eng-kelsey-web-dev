@@ -9,7 +9,9 @@
             </p>
             <a class="navbar-brand" href="">New Page</a>
             <p class="navbar-text pull-right">
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page"
+                   ng-click="model.createPage"
+                   class="navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </p>

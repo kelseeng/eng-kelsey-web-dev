@@ -10,9 +10,10 @@
         vm.pageId = $routeParams.pid;
 
         vm.updatedPage = updateThePage;
+        vm.deletedPage = deleteThePage;
 
         function init() {
-            vm.page = angular.copy(UserService.findPageById(vm.pageId));
+            vm.page = angular.copy(PageService.findPageById(vm.pageId));
         }
         init();
 
@@ -23,6 +24,16 @@
             }
             else {
                 vm.error = "Page Not Found";
+            }
+        }
+        
+        function deleteThePage() {
+            var result = PageService.deletePage(vm.pageId);
+            if(result === true) {
+                vm.success = "Page Successfully Deleted";
+            }
+            else {
+                vm.error = "Page Cannot Be Deleted";
             }
         }
     }
