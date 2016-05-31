@@ -6,14 +6,22 @@
     function NewWidgetController($routeParams, WidgetService) {
         var vm = this;
         vm.userId = $routeParams.uid;
+        vm.websiteId = $routeParams.wid;
+        vm.pageId = $routeParams.pid;
         vm.createWidget = createWidget;
 
         function createWidget(widgetType) {
             var newWidget = {
-                _id:(newDate().getTime()),
+                _id:(new Date().getTime()),
                 widgetType: widgetType
             };
-            widgets.push(newWidget);
+            var widget = WidgetService.createWidget(vm.pageId, newWidget);
+            if(page === true) {
+                vm.success = "Widget Successfully Created";
+            }
+            else {
+                vm.error = "Widget Was Unable to Be Created";
+            }
         }
     }
 })();

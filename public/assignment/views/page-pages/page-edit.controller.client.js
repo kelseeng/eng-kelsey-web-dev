@@ -13,7 +13,7 @@
         vm.deletedPage = deleteThePage;
 
         function init() {
-            vm.page = angular.copy(PageService.findPageById(vm.pageId));
+            vm.page = angular.copy(PageService.findPageByWebsiteId(vm.websiteId));
         }
         init();
 
