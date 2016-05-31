@@ -9,7 +9,7 @@
             </p>
             <a class="navbar-brand" href="">Edit Websites</a>
             <p class="navbar-text pull-right">
-                <a href="#/user/{{model.userId}}/website" class="navbar-link">
+                <a href=ng-click="model.updatedWebsite(model.website)" class="navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </p>
@@ -18,9 +18,13 @@
 </nav>
 <div class="container">
     <form>
-
-        {{model.website}}
-
+        <div ng-show="model.success" class="alert alert-success alert-dismissible" role="alert">
+            <button type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Success!</strong> Your website was saved.
+        </div>
         <div>
             <fieldset class="form-group">
                 <label for="websiteName">Website Name</label>

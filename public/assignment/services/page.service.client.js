@@ -10,6 +10,8 @@
                 { "_id": "543", "name": "Post 3", "websiteId": "456" }
             ];
         var api = {
+            createName : createName,
+            uniquePage : uniquePage,
             createPage   : createPage,
             findPagesByWebsiteId : findPagesByWebsiteId,
             findPageById : findPageById,
@@ -17,6 +19,16 @@
             deletePage : deletePage
         };
         return api;
+
+        function createName(websiteId) {
+            var counter = 0;
+            for(var i in pages) {
+                if(pages[i].websiteId === websiteId) {
+                    counter++;
+                }
+            }
+            return counter;
+        }
 
         function uniquePage(pageId) {
             for(var i in pages) {

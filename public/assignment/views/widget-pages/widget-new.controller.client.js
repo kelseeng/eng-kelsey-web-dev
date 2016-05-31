@@ -12,7 +12,7 @@
             var newWidget = {
                 _id:(newDate().getTime()),
                 widgetType: widgetType
-            }
+            };
             widgets.push(newWidget);
         }
     }

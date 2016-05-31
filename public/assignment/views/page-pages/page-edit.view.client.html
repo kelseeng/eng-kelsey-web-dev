@@ -3,13 +3,16 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page"
+                   class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </p>
             <a class="navbar-brand" href="">Edit Page</a>
             <p class="navbar-text pull-right">
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page"
+                   ng-click="model.updatedPage(model.page)"
+                   class="navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </p>
@@ -17,11 +20,20 @@
     </div>
 </nav>
 <div class="container">
+    <div ng-show="model.success" class="alert alert-success alert-dismissible" role="alert">
+        <button type="button"
+                class="close"
+                data-dismiss="alert"
+                aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Success!</strong> Your page was saved.
+    </div>
+
     <form>
         <div>
             <fieldset class="form-group">
                 <label for="pageName">Name</label>
-                <input type="text"
+                <input ng-model= "model.page.name"
+                        type="text"
                        class="form-control"
                        id="pageName"
                        placeholder="Blog Post">
@@ -38,7 +50,7 @@
         </div>
     </form>
     <a class="btn btn-danger btn-block"
-       href="page-list.view.client.html">Delete</a>
+       href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">Delete</a>
 </div>
 <nav id="footer"
      class="navbar navbar-default navbar-fixed-bottom navbar-text pull-right ">

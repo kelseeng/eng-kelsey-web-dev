@@ -7,10 +7,12 @@
     <h2>Login</h2>
     <input ng-model="username" class="form-control"
            placeholder="Username"
-           type="text">
+           type="text"
+           required>
     <input ng-model="password" class="form-control"
            placeholder="password"
-           type="Password">
+           type="Password"
+           required>
     <a ng-click="model.login(username, password)" class="btn btn-primary btn-block">Login</a>
     <a class="btn btn-success btn-block"
        href="#/register">Register</a>

@@ -3,12 +3,19 @@
         .module("WebAppMaker")
         .controller("NewPageController", NewPageController);
 
-    function NewPageController(PageService) {
+    function NewPageController($routeParams, PageService) {
         var vm = this;
-        
-        function init() {
-            
+        vm.userId = $routeParams.uid;
+        vm.websiteId = $routeParams.wid;
+        vm.createPage = createPage;
+
+        function createPage() {
+            var newPage = {
+                _id:(newDate().getTime()),
+                name: "Post " + PageService.createName(vm.websiteId),
+                websiteId: vm.websiteId
+            };
+            widgets.push(newWidget);
         }
-        init();
     }
 })();
