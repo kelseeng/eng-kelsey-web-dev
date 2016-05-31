@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="website-list.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
                   <span class="glyphicon glyphicon-chevron-left">
                   </span>
                 </a>
@@ -11,7 +11,7 @@
                 Edit Website
             </a>
             <p class="navbar-text pull-right">
-                <a href="website-list.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
                   <span class="glyphicon glyphicon-ok">
                   </span>
                 </a>
@@ -22,13 +22,13 @@
 <div class="container">
     <div ng-repeat="widget in widgets">
         <div ng-switch-when="HEADING">
-            <ng-include src="'widget-heading.view.client.html'"/>
+            <div ng-include src="'widget-heading.view.client.html'"></div>
         </div>
         <div ng-switch-when="IMAGE">
-            <ng-include src="'image.view.client.html'"/>
+            <div ng-include src="'image.view.client.html'"></div>
         </div>
         <div ng-switch-when="YOUTUBE">
-            <ng-include src="'widget-youtube.view.client.html'"/>
+            <div ng-include src="'widget-youtube.view.client.html'"></div>
         </div>
     </div>
 </div>
