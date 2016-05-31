@@ -18,16 +18,24 @@
         };
         return api;
 
-        function createPage(websiteId, page) {
+        function uniquePage(pageId) {
             for(var i in pages) {
-                if(pages[i].websiteId === websiteId) {
-
-                }
-                else {
-                    pages.push(page);
+                if(pages[i]._id === pageId) {
+                    return false;
                 }
             }
+            return true;
         }
+
+        function createPage(websiteId, page) {
+            if(uniquePage(page._id)){
+                var newPage = {"_id": page._id, "name": page.name, "websiteId": websiteId};
+                pages.push(newPage);
+                return true;
+            }
+            return false;
+        }
+        
         function findPagesByWebsiteId(websiteId) {
             var result = [];
             for(var i in pages) {
@@ -47,17 +55,24 @@
             return null;
         }
         function updatePage(pageId, page) {
-            
+            for(var i in pages) {
+                if(pages[i]._id === pageId) {
+                    page[i].name = page.name;
+                    page[i].websiteId = page.websiteId;
+                    return true;
+                }
+            }
+            return false;
         }
 
         function deletePage(pageId) {
-            var index = -1;
             for(var i in pages) {
                 if(pages[i]._id === pageId) {
-                    index = i;
+                    pages.splice(i, 1);
+                    return true;
                 }
             }
-            return null;
+            return false;
         }
     }
 })();

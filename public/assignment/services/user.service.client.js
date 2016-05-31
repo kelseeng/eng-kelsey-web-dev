@@ -22,12 +22,19 @@
         };
         return api;
 
-        function createUser(user) {
-            for(var i in users) {
-                if(users[i].username !== user.username) {
-                    users.push(user);
-                    return true;
+        function uniqueUser(user) {
+            for(var i in users){
+                if(users[i]._id === user._id && users[i].username === user.username){
+                    return false;
                 }
+            }
+            return true;
+        }
+
+        function createUser(user) {
+            if(uniqueUser(user)) {
+                users.push(user);
+                return true;
             }
             return false;
         }

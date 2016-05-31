@@ -23,9 +23,25 @@
             deleteWidget : deleteWidget
         };
         return api;
-        function createWidget(pageId, widget) {
 
+        function uniqueWidget(widget) {
+            for(var i in widgets) {
+                if(widgets[i]._id === widget._id) {
+                    return false;
+                }
+            }
+            return true;
         }
+
+        function createWidget(pageId, widget) {
+            if(uniqueWidget(widget)) {
+                widget.pageId = pageId;
+                widgets.push(widget);
+                return true;
+            }
+            return false;
+        }
+        
         function findWidgetsByPageId(pageId) {
             var result = [];
             for(var i in widgets) {
@@ -34,16 +50,53 @@
                 }
             }
             return result;
-
         }
+
         function findWidgetById(widgetId) {
-
+            for(var i in widgets) {
+                if(widgets[i]._id === widgetId) {
+                    return widgets[i];
+                }
+            }
+            return null;
         }
+
         function updateWidget(widgetId, widget) {
-
+            for(var i in widgets) {
+                if(widgets[i]._id === widgetId) {
+                    widgets[i].widgetType = widget.widgetType;
+                    widgets[i].pageId = widget.pageId;
+                    switch(widgets[i].widgetType) {
+                        case "HEADER":
+                            widgets[i].size = widget.size;
+                            widgets[i].text = widget.text;
+                            break;
+                        case "IMAGE":
+                            widgets[i].width = widget.width;
+                            widgets[i].url = widget.url;
+                            break;
+                        case "YOUTUBE":
+                            widgets[i].width = widget.width;
+                            widgets[i].url = widget.url;
+                            break;
+                        case "HTML":
+                            widgets[i].text = widget.text;
+                            break;
+                    }
+                    return true;
+                }
+            }
+            return false;
         }
-        function deleteWidget(widgetId) {
 
+        function deleteWidget(widgetId) {
+            for(var i in widgets) {
+                if(widgets[i]._id === widgetId) {
+                    widgets.splice(i, 1);
+                    return true;
+                }
+            }
+            return false;
         }
     }
 })();

@@ -1,9 +1,14 @@
 (function() {
     angular
         .module("WebAppMaker")
-        .controller("NewPageController", NewPageController)
+        .controller("NewPageController", NewPageController);
 
     function NewPageController(PageService) {
         var vm = this;
+        
+        function init() {
+            
+        }
+        init();
     }
 })();
