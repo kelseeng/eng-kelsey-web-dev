@@ -15,21 +15,7 @@
         </div>
     </div>
 </nav>
-<div ng-repeat="widgets in model.widgets" class="widget">
-    <p class="pull-right overlayTopRight">
-        <a href="widget-heading.view.client.html">
-            <span class="glyphicon glyphicon-cog blue"></span>
-        </a>
-        <a href="">
-            <span class="glyphicon glyphicon-align-justify black"></span>
-        </a>
-    </p>
-    <ANY ng-switch="">
-
-    </ANY>
-{{widget}}
-</div>
-<div class="container">
+<div ng-repeat="widgets in model.widgets" ng-switch="widget.widgetType">
     <ul id="noBullets">
         <li>
             <div>
@@ -41,104 +27,29 @@
                         <span class="glyphicon glyphicon-align-justify black"></span>
                     </a>
                 </p>
-                <h1>GIZMODO</h1>
-            </div>
-        </li>
-        <li>
-            <div>
-                <p class="pull-right overlayTopRight">
-                    <a href="widget-heading.view.client.html">
-                        <span class="glyphicon glyphicon-cog blue"></span>
-                    </a>
-                    <a href="">
-                        <span class="glyphicon glyphicon-align-justify black"></span>
-                    </a>
-                </p>
-                <h3>US Senate Reaches Compromise on Emergency Zika Funding</h3>
-            </div>
-        </li>
-        <li>
-            <div>
-                <p class="pull-right overlayTopRight">
-                    <a href="widget-image.view.client.html">
-                        <span class="glyphicon glyphicon-cog blue"></span>
-                    </a>
-                    <a href="">
-                        <span class="glyphicon glyphicon-align-justify black"></span>
-                    </a>
-                </p>
-                <img src="http://www.bassethoundsrunning.com/wp-content/uploads/2012/12/basset_hound_running_00021.jpg"
-                     width="100%">
-            </div>
-        </li>
-        <li>
-            <div>
-                <p class="pull-right overlayTopRight">
-                    <a href="widget-heading.view.client.html">
-                        <span class="glyphicon glyphicon-cog blue"></span>
-                    </a>
-                    <a href="">
-                        <span class="glyphicon glyphicon-align-justify black"></span>
-                    </a>
-                </p>
-                <h5>
-                    In February the
-                    <a href="https://www.whitehouse.gov/the-press-office/2016/02/08/fact-sheet-preparing-and-responding-zika-virus-home-and-abroad"
-                       target="_blank"
-                       class="blue">White House formally asked Congress for $1.8 billion
-                    </a>
-                    dollars to help combat the Zika virus this summer. Now, the senate has worked out a bipartisan
-                    deal will allocate $1.1 billion in emergency funding
-                </h5>
-            </div>
-        </li>
-        <li>
-            <div>
-                <p class="pull-right overlayTopRight">
-                    <a href="widget-heading.view.client.html">
-                        <span class="glyphicon glyphicon-cog blue"></span>
-                    </a>
-                    <a href="">
-                        <span class="glyphicon glyphicon-align-justify black"></span>
-                    </a>
-                </p>
-                <h3>See How Otters Eat!</h3>
-            </div>
-        </li>
-        <li>
-            <div>
-                <p class="pull-right overlayTopRight">
-                    <a href="widget-youtube.view.client.html">
-                        <span class="glyphicon glyphicon-cog blue"></span>
-                    </a>
-                    <a href="">
-                        <span class="glyphicon glyphicon-align-justify black"></span>
-                    </a>
-                </p>
-                <iframe width="100%"
-                        src="https://www.youtube.com/embed/1b0ZbcdbMBI" frameborder="0" allowfullscreen>
-                </iframe>
-            </div>
-        </li>
-        <li>
-            <div>
-                <p class="pull-right overlayTopRight">
-                    <a href="widget-heading.view.client.html">
-                        <span class="glyphicon glyphicon-cog blue"></span>
-                    </a>
-                    <a href="">
-                        <span class="glyphicon glyphicon-align-justify black"></span>
-                    </a>
-                </p>
-                <h5>
-                    Forget owls and dogs. We've found a new winner for the title of Best Boyfriend: otters! These cuddly
-                    little sea-dwellers are too cute and ready for your love. From the tips of their noses to those
-                    funky tails, these guys are the clear winners in the race to be the best boyfriend.
-                    <a href="http://www.yourtango.com/2014206768/love-13-reasons-otters-make-best-boyfriends-bar-none-dating?source=huffingtonpostgoodnews"
-                       target="_blank"
-                       class="blue">Click to See More!
-                    </a>
-                </h5>
+                <div ng-switch-when="HEADER" class="widgets">
+                    <div ng-switch="widget.size">
+                        <h1 ng-switch-when="1">{{widget.text}}</h1>
+                        <h2 ng-switch-when="1">{{widget.text}}</h2>
+                        <h3 ng-switch-when="1">{{widget.text}}</h3>
+                        <h4 ng-switch-when="1">{{widget.text}}</h4>
+                        <h5 ng-switch-when="1">{{widget.text}}</h5>
+                        <h6 ng-switch-when="1">{{widget.text}}</h6>
+                    </div>
+                </div>
+                <div ng-switch-when="IMAGE" class="widgets">
+                    <img ng-src="{{widget.url}}"
+                         width="{{widget.width}}">
+                </div>
+                <div ng-switch-when="YOUTUBE" class="widgets">
+                    <iframe width="{{widget.width}}"
+                            height="auto"
+                            ng-src="{{model.getTrustedUrl(widget}}"
+                            frameborder="0"
+                            allowfullscreen></iframe>
+                </div>
+                <div ng-switch-when="HTML" class="widgets" ng-blind-html="model.getTrustedHtml(widget)"></div>
+                <div ng-switch-default>{{widget}}</div>
             </div>
         </li>
     </ul>
