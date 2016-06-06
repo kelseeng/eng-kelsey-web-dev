@@ -3,28 +3,46 @@
         .module("WebAppMaker")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($routeParams, UserService) {
+    function ProfileController($location, $routeParams, UserService) {
         var vm = this;
-        vm.updatedUser = updateTheUser;
+        vm.updateUser = updateUser;
+        vm.unregister = unregister;
 
-        var id = $routeParams["uid"];
+        var id = $routeParams.id;
+
         function init() {
             UserService
                 .findUserById(id)
-                .then(function(response) {
+                .then(function(response){
                     vm.user = response.data;
                 });
         }
         init();
 
-        function updateTheUser() {
-            var result = UserService.updateUser(vm.user._id, vm.user);
-            if(result === true) {
-                vm.success = "User Successfully Updated";
-            }
-            else {
-                vm.error = "User Not Found";
-            }
+        function unregister() {
+            UserService
+                .deleteUser(id)
+                .then(
+                    function(){
+                        $location.url("/login");
+                    },
+                    function() {
+                        vm.error = "Unable to remove user"
+                    }
+                );
+        }
+
+        function updateUser(newUser) {
+            UserService
+                .updateUser(id, newUser)
+                .then(
+                    function(response) {
+                        vm.success = "Updated successfully";
+                    },
+                    function(error) {
+                        vm.error = "Unable to update user"
+                    }
+                );
         }
     }
 })();

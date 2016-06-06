@@ -13,12 +13,13 @@ module.exports = function(app) {
     app.get("/api/user/:userId", findUserById);
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
-    
+
     app.get("/allusers/:username", function(req, res) {
         var username = req.params['username'];
         for(var i in users) {
             if(users[i].username === username) {
                 res.send(users[i]);
+                return;
             }
         }
         res.send(users);
@@ -55,6 +56,7 @@ module.exports = function(app) {
         for(var i in users) {
             if(users[i].username === username && users[i].password === password) {
                 res.send(users[i]);
+                return;
             }
         }
         res.send(403);
@@ -65,6 +67,7 @@ module.exports = function(app) {
         for(var i in users) {
             if(users[i]._id === userId) {
                 res.send(users[i]);
+                return;
             }
         }
         res.send({});
@@ -74,6 +77,7 @@ module.exports = function(app) {
         for(var i in users) {
             if(users[i].username === username) {
                 res.send(users[i]);
+                return;
             }
         }
         res.send({});
@@ -90,10 +94,8 @@ module.exports = function(app) {
         }
         else {
             res.send(users);
+            return;
         }
-        console.log(username);
-        console.log(password);
-        res.send(users);
     }
     
     function updateUser(req, res) {
