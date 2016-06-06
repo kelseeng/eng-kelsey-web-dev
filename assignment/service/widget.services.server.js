@@ -18,9 +18,9 @@ module.exports = function (app) {
     app.post ("/api/upload", upload.single('myFile'), uploadImage);
     app.post ("/api/page/:pageId/widget", createWidget);
     app.get ("/api/page/:pageId/widget", findAllWidgetsForPage);
-    app.get ("/app/widget/:widgetId", findWidgetById);
-    app.put ("/app/widget/:widgetId", updateWidget);
-    app.delete ("/app/widget/:widgetId", deleteWidget);
+    app.get ("/api/widget/:widgetId", findWidgetById);
+    app.put ("/api/widget/:widgetId", updateWidget);
+    app.delete ("/api/widget/:widgetId", deleteWidget);
 
     function uploadImage(req, res) {
 
@@ -41,7 +41,14 @@ module.exports = function (app) {
             }
         }
 
-        res.redirect("/assignment/#/user/:uid/website/:wid/page/:pid/widget/:wgid");
+        if(myFile == null) {
+            res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId);
+        }
+        else {
+            res.redirect("/assignment/#/user/:uid/website/:wid/page/:pid/widget/:wgid");
+        }
+        
+        return;
     }
 
     function createWidget(req, res) {

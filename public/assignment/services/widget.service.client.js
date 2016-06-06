@@ -2,101 +2,53 @@
     angular
         .module("WebAppMaker")
         .factory("WidgetService", WidgetService);
-    function WidgetService() {
-        var widgets =
-            [
-                { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
-                { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-                { "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
-                    "url": "http://lorempixel.com/400/200/"},
-                { "_id": "456", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"},
-                { "_id": "567", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-                { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
-                    "url": "https://youtu.be/AM2Ivdi9c4E" },
-                { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
-            ];
+    function WidgetService($http) {
+
         var api = {
             createWidget   : createWidget,
-            findWidgetsByPageId : findWidgetsByPageId,
+            findAllWidgetsForPage : findAllWidgetsForPage,
             findWidgetById : findWidgetById,
             updateWidget : updateWidget,
             deleteWidget : deleteWidget
         };
         return api;
 
-        function uniqueWidget(widget) {
-            for(var i in widgets) {
-                if(widgets[i]._id === widget._id) {
-                    return false;
-                }
-            }
-            return true;
-        }
+        var widgetId      = req.body.widgetId;
+        var width         = req.body.width;
+        var myFile        = req.file;
 
-        function createWidget(pageId, widget) {
-            if(uniqueWidget(widget)) {
-                widget.pageId = pageId;
-                widgets.push(widget);
-                return true;
-            }
-            return false;
+        function uploadImage(widgetId, width, file) {
+            var url = "/api/upload";
+            return $http.post();
         }
         
-        function findWidgetsByPageId(pageId) {
-            var result = [];
-            for(var i in widgets) {
-                if(widgets[i].pageId === pageId) {
-                    result.push(widgets[i]);
-                }
-            }
-            return result;
+        function createWidget(pageId, widgetType) {
+            var url = "/api/page/" + pageId + "/widget";
+            var widget = {
+                widgetType: widgetType,
+                pageId: pageId
+            };
+            return $http.post(url, widget);
+        }
+        
+        function findAllWidgetsForPage(pageId) {
+            var url = "/api/page/" + pageId + "/widget";
+            return $http.get(url);
         }
 
         function findWidgetById(widgetId) {
-            for(var i in widgets) {
-                if(widgets[i]._id === widgetId) {
-                    return widgets[i];
-                }
-            }
-            return null;
+            var url = "/api/widget/" + widgetId;
+            return $http.get(url);
         }
 
-        function updateWidget(widgetId, widget) {
-            for(var i in widgets) {
-                if(widgets[i]._id === widgetId) {
-                    widgets[i].widgetType = widget.widgetType;
-                    widgets[i].pageId = widget.pageId;
-                    switch(widgets[i].widgetType) {
-                        case "HEADER":
-                            widgets[i].size = widget.size;
-                            widgets[i].text = widget.text;
-                            break;
-                        case "IMAGE":
-                            widgets[i].width = widget.width;
-                            widgets[i].url = widget.url;
-                            break;
-                        case "YOUTUBE":
-                            widgets[i].width = widget.width;
-                            widgets[i].url = widget.url;
-                            break;
-                        case "HTML":
-                            widgets[i].text = widget.text;
-                            break;
-                    }
-                    return true;
-                }
-            }
-            return false;
+        function updateWidget(widgetId, newWidget) {
+            var url = "/api/widget/" + widgetId;
+            return $http.put(url, newWidget);
         }
 
         function deleteWidget(widgetId) {
-            for(var i in widgets) {
-                if(widgets[i]._id === widgetId) {
-                    widgets.splice(i, 1);
-                    return true;
-                }
-            }
-            return false;
+            var url = "/api/widget/" + widgetId;
+            return $http.delete(url);
         }
     }
 })();

@@ -4,6 +4,8 @@ module.exports(function(app) {
     var secret = "28c49ff8f6196bfb";
     var urlBase = "https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key=API_KEY&text=TEXT";
 
+    app.get("", searchPhotos);
+    
     function searchPhotos(searchTerm) {
         var url = urlBase.replace("API_KEY", key).replace("TEXT", searchTerm);
         return $http.get(url);

@@ -15,21 +15,13 @@
         };
         return api;
 
-        function uniqueUser(user) {
-            for(var i in users){
-                if(users[i]._id === user._id && users[i].username === user.username){
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        function createUser(user) {
-            if(uniqueUser(user)) {
-                users.push(user);
-                return true;
-            }
-            return false;
+        function createUser(username, password) {
+            var url = "/api/user";
+            var user = {
+                username: username,
+                password: password
+            };
+            return $http.post(url, user);
         }
 
         function findUserById(id) {
@@ -38,44 +30,23 @@
         }
 
         function findUserByUsername(username) {
-            for(var i in users) {
-                if(users[i].username === username) {
-                    return users[i];
-                }
-            }
-            return null;
-        }
-
-        function findUserByCredentials(username, password) {
-            var url = "/api/user?username="+username+"&password="+password;
+            var url = "/api/user?username=" + username;
             return $http.get(url);
         }
 
-        function updateUser(userId, user) {
-            for(var i in users) {
-                if(users[i]._id === userId) {
-                    users[i].firstName = user.firstName;
-                    users[i].lastName = user.lastName;
-                    return true;
-                }
-            }
-            return false;
+        function findUserByCredentials(username, password) {
+            var url = "/api/user?username=" + username + "&password=" + password;
+            return $http.get(url);
         }
 
-        function deleteUser(userId) {
-            var index = -1;
-            for(var i in users) {
-                if(users[i]._id === userId) {
-                    index = i;
-                }
-            }
-            if(index !== -1) {
-                users.splice(index, 1);
-                return true;
-            }
-            else {
-                return false;
-            }
+        function updateUser(id, newUser) {
+            var url = "/api/user/"+id;
+            return $http.put(url, newUser);
+        }
+
+        function deleteUser(id) {
+            var url = "/api/user/"+id;
+            return $http.delete(url);
         }
     }
 })();
