@@ -10,7 +10,13 @@
         // todo fix wid variable
 
         function init() {
-            vm.pages = PageService.findPagesByWebsiteId(vm.websiteId);
+            PageService
+                .findAllPagesForWebsite(websiteId)
+                .then(
+                    function(response) {
+                        vm.pages = response.data;
+                    }
+                );
         }
         init();
     }

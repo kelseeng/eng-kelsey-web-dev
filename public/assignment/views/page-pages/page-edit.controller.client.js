@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("EditPageController", EditPageController);
 
-    function EditPageController($routeParams, PageService) {
+    function EditPageController($location, $routeParams, PageService) {
         var vm = this;
         vm.user = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
@@ -13,28 +13,40 @@
         vm.deletedPage = deleteThePage;
 
         function init() {
-            vm.page = angular.copy(PageService.findPageByWebsiteId(vm.websiteId));
+            PageService
+                .findAllPagesForWebsite(websiteId)
+                .then(
+                    function(response) {
+                        vm.page = response.data;
+                    }
+                );
         }
         init();
 
         function updateThePage() {
-            var result = PageService.updatePage(vm.pageId, vm.page);
-            if(result === true) {
-                vm.success = "Page Successfully Updated";
-            }
-            else {
-                vm.error = "Page Not Found";
-            }
+            PageService
+                .updatePage(pageId, page)
+                .then(
+                    function(response) {
+                        $location.url("/user/"+userId+"/website/"+websiteId+"/page");
+                    },
+                    function(error) {
+                        vm.error = "Page not found";
+                    }
+                );
         }
         
         function deleteThePage() {
-            var result = PageService.deletePage(vm.pageId);
-            if(result === true) {
-                vm.success = "Page Successfully Deleted";
-            }
-            else {
-                vm.error = "Page Cannot Be Deleted";
-            }
+            PageService
+                .deletePage(pageId)
+                .then(
+                    function(response) {
+                        $location.url("/user/"+userId+"/website/"+websiteId+"/page");
+                    },
+                    function(error) {
+                        vm.error = "Page was unable to be removed"
+                    }
+                );
         }
     }
 })();

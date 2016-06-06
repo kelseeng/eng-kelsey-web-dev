@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("EditWebsiteController", EditWebsiteController);
 
-    function EditWebsiteController($routeParams, WebsiteService) {
+    function EditWebsiteController($location, $routeParams, WebsiteService) {
         var vm = this;
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
@@ -11,30 +11,40 @@
 
         vm.updatedWebsite = updateTheWebsite;
         vm.deletedWebsite = deleteTheWebsite;
-
+        
         function init() {
-            vm.website = angular.copy(WebsiteService.findWebsiteById(vm.websiteId));
+            WebsiteService
+                .findWebsiteById(websiteId)
+                .then(function(response) {
+                   vm.website = response.data; 
+                });
         }
         init();
 
         function updateTheWebsite() {
-            var result = WebsiteService.updateWebsite(vm.websiteId, vm.website);
-            if(result === true) {
-                vm.success = "Page Successfully Updated";
-            }
-            else {
-                vm.error = "Page Not Found";
-            }
+            WebsiteService
+                .updateWebsite(websiteId, vm.website)
+                .then(
+                    function(response) {
+                        $location.url("/user/"+userId+"/website");
+                    },
+                    function(error) {
+                        vm.error = "Website Not Found";
+                    }
+                );
         }
         
         function deleteTheWebsite() {
-            var result = WebsiteService.deleteWebsite(vm.websiteId);
-            if(result === true) {
-                vm.success = "Website Successfully Deleted";
-            }
-            else {
-                vm.error = "Website Cannot Be Deleted";
-            }
+            WebsiteService
+                .deleteWebsite(websiteId)
+                .then(
+                    function(response) {
+                        $location.url("/user/"+userId+"/website");
+                    },
+                    function(error) {
+                        vm.error = "Unable to remove website";
+                    }
+                );
         }
     }
 })();

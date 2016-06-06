@@ -49,6 +49,14 @@ select {
     color: black;
 }
 
+.white {
+    color: white;
+}
+
+.blue-header {
+    background-color: dodgerblue;
+}
+
 #noBullets {
     list-style: none;
     margin-left: -40px;

@@ -3,8 +3,10 @@
         .module("WebAppMaker")
         .controller("FlickrImageSearchController", FlickrImageSearchController);
     
-    function FlickrImageSearchController() {
+    function FlickrImageSearchController(FlickrService) {
         var vm = this;
+        vm.searchPhotos = searchPhotos;
+        vm.selectPhoto = selectPhoto;
 
         function selectPhoto(photo) {
             var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
@@ -15,7 +17,8 @@
                     
                 });
         }
-        vm.searchPhotos = function(searchTerm) {
+
+        function searchPhotos(searchTerm) {
             FlickrService
                 .searchPhotos(searchTerm)
                 .then(function(response) {

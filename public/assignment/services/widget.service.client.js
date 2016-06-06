@@ -19,7 +19,7 @@
 
         function uploadImage(widgetId, width, file) {
             var url = "/api/upload";
-            return $http.post();
+            return $http.post(url);
         }
         
         function createWidget(pageId, widgetType) {

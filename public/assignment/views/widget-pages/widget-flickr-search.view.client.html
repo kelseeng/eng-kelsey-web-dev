@@ -1,3 +1,21 @@
+<nav id="header"
+     class="navbar navbar-default navbar-fixed-top navbar-text pull-right blue-header">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="widget-list.view.client.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left white"></span>
+                </a>
+            </p>
+            <a class="navbar-brand white" href="">Search Flickr</a>
+            <p class="navbar-text pull-right">
+                <a href="widget-list.view.client.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-ok white"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
 <div class="input-group">
     <input ng-model="searchText" type="text" class="form-control">
     <span class="input-group-btn">
@@ -9,7 +27,24 @@
 <div class="row">
     <div class="col-xs-4" ng-repeat="photo in model.photos.photo">
         <img ng-click="model.selectPhoto(photo)"
-             ng-src="https://farm{{photo.farm}}.staticflickr.com/
-             {{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
+             ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
     </div>
 </div>
+<nav id="footer"
+     class="navbar navbar-default navbar-fixed-bottom navbar-text pull-right blue-header">
+    <div class="container-fluid">
+        <div class="row navbar-text">
+            <div class="col-xs-3 text-center">
+            </div>
+            <div class="col-xs-3 text-center">
+            </div>
+            <div class="col-xs-3 text-center">
+            </div>
+            <div class="col-xs-3 text-center">
+                <a href="#/user/{{model.userId}}">
+                    <span class="glyphicon glyphicon-user white pull-right"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

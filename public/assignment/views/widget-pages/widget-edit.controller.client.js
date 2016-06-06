@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("EditWidgetController", EditWidgetController);
 
-    function EditWidgetController($routeParams, WidgetService) {
+    function EditWidgetController($location, $routeParams, WidgetService) {
         var vm = this;
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
@@ -11,28 +11,40 @@
         vm.widgetId = $routeParams.wgid;
 
         function init() {
-            vm.widget = angular.copy(WidgetService.findWidgetByPageId(vm.pageId));
+            WidgetService  
+                .findAllWidgetsForPage(pageId)
+                .then(
+                    function(response) {
+                        vm.widget = response.data;
+                    }
+                )
         }
         init();
 
         function updateTheWidget() {
-            var result = WidgetService.updateWidget(vm.widgetId, vm.widget);
-            if(result === true) {
-                vm.success = "Widget Successfully Updated";
-            }
-            else {
-                vm.error = "Widget Not Found";
-            }
+            WidgetService   
+                .updateWidget(widgetId, widget)
+                .then(
+                    function(response) {
+                        $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
+                    },
+                    function(error) {
+                        vm.error = "Widget not found";
+                    }
+                );
         }
 
         function deleteTheWidget() {
-            var result = WidgetService.deleteWidget(vm.widgetId);
-            if(result === true) {
-                vm.success = "Widget Successfully Deleted";
-            }
-            else {
-                vm.error = "Widget Cannot Be Deleted";
-            }
+            WidgetService
+                .deleteWidget(widgetId)
+                .then(
+                    function(response) {
+                        $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
+                    },
+                    function(error) {
+                        vm.error = "Widget was unable to be removed"
+                    }
+                );
         }
     }
 })();

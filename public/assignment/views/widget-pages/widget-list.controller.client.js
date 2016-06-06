@@ -9,8 +9,15 @@
         vm.pageId = $routeParams.pid;
 
         function init() {
-            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
+            WidgetService  
+                .findAllWidgetsForPage(pageId)
+                .then(
+                    function(response) {
+                        vm.widgets = response.data;
+                    }
+                );
         }
+        init();
 
         vm.getTrustedHtml = getTrustedHtml;
         vm.getTrustedUrl = getTrustedUrl;
