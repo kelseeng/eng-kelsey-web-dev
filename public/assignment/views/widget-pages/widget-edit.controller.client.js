@@ -1,7 +1,7 @@
 (function() {
     angular
         .module("WebAppMaker")
-        .controller("EditWidgetController", EditWidgetController)
+        .controller("EditWidgetController", EditWidgetController);
 
     function EditWidgetController($routeParams, WidgetService) {
         var vm = this;

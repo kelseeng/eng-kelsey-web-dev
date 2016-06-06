@@ -8,7 +8,7 @@
                 </a>
             </p>
             <a class="navbar-brand" href="#">
-                Edit Website
+                Edit Widget
             </a>
             <p class="navbar-text pull-right">
                 <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget"
@@ -22,6 +22,13 @@
     </div>
 </nav>
 <div class="container">
+    <form action="/api/upload"  method="post" enctype="multipart/form-data">
+        <input  name="myFile"   type="file" class="form-control"/>
+        <input  name="width"    value="{{model.widget.width}}" style="display: none"/>
+        <input  name="widgetId" value="{{model.widget._id}}"   style="display: none"/>
+        <button type="submit"   class="btn btn-block btn-primary">Upload Image</button>
+    </form>
+
     <div ng-repeat="widget in widgets">
         <div ng-switch-when="HEADING">
             <div ng-include src="'widget-heading.view.client.html'"></div>

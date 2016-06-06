@@ -9,7 +9,11 @@
 
         var id = $routeParams["uid"];
         function init() {
-            vm.user = angular.copy(UserService.findUserById(id));
+            UserService
+                .findUserById(id)
+                .then(function(response) {
+                    vm.user = response.data;
+                });
         }
         init();
 
