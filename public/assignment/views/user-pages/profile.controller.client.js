@@ -23,18 +23,18 @@
             UserService
                 .deleteUser(id)
                 .then(
-                    function(){
+                    function(response){
                         $location.url("/login");
                     },
-                    function() {
+                    function(error) {
                         vm.error = "Unable to remove user"
                     }
                 );
         }
 
-        function updateUser(newUser) {
+        function updateUser() {
             UserService
-                .updateUser(id, newUser)
+                .updateUser(id, vm.user)
                 .then(
                     function(response) {
                         vm.success = "Updated successfully";

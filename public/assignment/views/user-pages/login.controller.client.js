@@ -10,17 +10,19 @@
         function login(username, password) {
             UserService
                 .findUserByCredentials(username, password)
-                .then(function (response) {
-                    console.log(response);
-                    var user = response.data;
-                    if(user) {
-                        var id = user._id;
-                        $location.url("/user/" + id);
-                    }
-                    else {
-                        vm.error = "User Not Found";
-                    }
-                });
+                .then(
+                    function (response) {
+                        console.log(response);
+                        var user = response.data;
+                        if (user) {
+                            var id = user._id;
+                            $location.url("/user/" + id);
+                        }
+                    },
+                    
+                    function (error) {
+                        vm.error = "User not found";
+                    });
         }
     }
 })();
