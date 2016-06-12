@@ -1,4 +1,6 @@
-module.exports = function(app) {
+module.exports = function(app, models) {
+
+    var userModel = models.userModel;
 
     var users =
         [
@@ -28,16 +30,27 @@ module.exports = function(app) {
     function createUser(req, res) {
         var newUser = req.body;
 
-        for(var i in users) {
-            if(users[i].username === newUser.username) {
-                res.status(400).send("Username " + newUser.username + " is already in use");
-                return;
-            }
-        }
+        // for(var i in users) {
+        //     if(users[i].username === newUser.username) {
+        //         res.status(400).send("Username " + newUser.username + " is already in use");
+        //         return;
+        //     }
+        // }
+        //
+        // newUser._id = (new Date()).getTime() + "";
+        // users.push(newUser);
+        // res.json(newUser);
 
-        newUser._id = (new Date()).getTime() + "";
-        users.push(newUser);
-        res.json(newUser);
+        userModel
+            .createUser(newUser)
+            .then(
+                function(user) {
+                    res.json(user);
+                },
+                function(error) {
+                    res.status(400).send("Username " + newUser.username + " is already in use");
+                }
+            );
     }
     
     function deleteUser(req, res) {
